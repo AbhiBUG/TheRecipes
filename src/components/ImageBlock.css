@@ -1,0 +1,51 @@
+.sprite:hover .sprite-inner.row0 {
+  animation: slideRow0 1s steps(4, end) infinite;
+}
+
+.sprite:hover .sprite-inner.row1 {
+  animation: slideRow1 1s steps(4, end) infinite;
+}
+
+.sprite:hover .sprite-inner.row2 {
+  animation: slideRow2 1s steps(4, end) infinite;
+}
+
+.sprite:hover .sprite-inner.row3 {
+  animation: slideRow3 1s steps(4, end) infinite;
+}
+
+@keyframes slideRow0 {
+  from {
+    transform: translateY(0) translateX(0);
+  }
+  to {
+    transform: translateY(0) translateX(-1080px); /* 270px * 4 cols */
+  }
+}
+
+@keyframes slideRow1 {
+  from {
+    transform: translateY(-270px) translateX(0);
+  }
+  to {
+    transform: translateY(-270px) translateX(-1080px);
+  }
+}
+
+@keyframes slideRow2 {
+  from {
+    transform: translateY(-540px) translateX(0);
+  }
+  to {
+    transform: translateY(-540px) translateX(-1080px);
+  }
+}
+
+@keyframes slideRow3 {
+  from {
+    transform: translateY(-810px) translateX(0);
+  }
+  to {
+    transform: translateY(-810px) translateX(-1080px);
+  }
+}

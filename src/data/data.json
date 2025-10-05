@@ -1,0 +1,106 @@
+[
+  {
+    "id": 1,
+    "title": "Veggie Burger",
+    "author": "Chef AJ",
+    "createdAt": "2025-10-05T18:30:00Z",
+    "likes": 120,
+    "ingredients": [
+      "Black beans",
+      "Oats",
+      "Onion",
+      "Chili flakes",
+      "Burger bun"
+    ],
+    "steps": [
+      "Mash beans and mix with ingredients.",
+      "Shape into patties and cook on pan.",
+      "Assemble and serve hot."
+    ],
+    "image": "img1.png"
+  },
+  {
+    "id": 2,
+    "title": "Spaghetti Carbonara",
+    "author": "Chef Maria",
+    "createdAt": "2025-10-04T15:20:00Z",
+    "likes": 200,
+    "ingredients": [
+      "Spaghetti",
+      "Eggs",
+      "Parmesan cheese",
+      "Bacon",
+      "Black pepper"
+    ],
+    "steps": [
+      "Cook spaghetti until al dente.",
+      "Fry bacon until crispy.",
+      "Mix eggs and cheese, then combine with spaghetti and bacon.",
+      "Season with black pepper and serve hot."
+    ],
+    "image": "img2.png"
+  },
+  {
+    "id": 3,
+    "title": "Chicken Caesar Salad",
+    "author": "Chef John",
+    "createdAt": "2025-10-03T12:45:00Z",
+    "likes": 150,
+    "ingredients": [
+      "Romaine lettuce",
+      "Grilled chicken",
+      "Caesar dressing",
+      "Croutons",
+      "Parmesan cheese"
+    ],
+    "steps": [
+      "Chop lettuce and place in a bowl.",
+      "Add grilled chicken slices and croutons.",
+      "Drizzle Caesar dressing and sprinkle parmesan.",
+      "Toss lightly and serve chilled."
+    ],
+    "image": "img3.png"
+  },
+  {
+    "id": 4,
+    "title": "Chocolate Chip Cookies",
+    "author": "Baker Lily",
+    "createdAt": "2025-10-02T09:15:00Z",
+    "likes": 300,
+    "ingredients": [
+      "Flour",
+      "Sugar",
+      "Butter",
+      "Eggs",
+      "Chocolate chips"
+    ],
+    "steps": [
+      "Preheat oven to 180°C.",
+      "Mix butter and sugar, then add eggs and flour.",
+      "Fold in chocolate chips.",
+      "Scoop dough onto baking tray and bake for 12-15 minutes."
+    ],
+    "image": "img4.png"
+  },
+  {
+    "id": 5,
+    "title": "Avocado Toast",
+    "author": "Chef Emma",
+    "createdAt": "2025-10-01T08:00:00Z",
+    "likes": 90,
+    "ingredients": [
+      "Bread slices",
+      "Ripe avocado",
+      "Lemon juice",
+      "Salt",
+      "Chili flakes"
+    ],
+    "steps": [
+      "Toast bread slices until golden.",
+      "Mash avocado with lemon juice and salt.",
+      "Spread avocado on toast and sprinkle chili flakes.",
+      "Serve immediately."
+    ],
+    "image": "img5.png"
+  }
+]

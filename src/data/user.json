@@ -1,0 +1,23 @@
+[
+  {
+    "id": 1,
+    "name": "John Doe",
+    "email": "johndoe@example.com",
+    "password": "password123",
+    "createdAt": "2025-10-05T18:30:00Z"
+  },
+  {
+    "id": 2,
+    "name": "Jane Smith",
+    "email": "janesmith@example.com",
+    "password": "securepass456",
+    "createdAt": "2025-10-05T19:00:00Z"
+  },
+  {
+    "id": 3,
+    "name": "Alice Johnson",
+    "email": "alicej@example.com",
+    "password": "mypassword789",
+    "createdAt": "2025-10-05T19:15:00Z"
+  }
+]
