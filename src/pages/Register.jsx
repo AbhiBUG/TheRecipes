@@ -1,49 +1,83 @@
 import React, { useState } from 'react';
 import data from '../data/user.json'; // import existing users
+import { useNavigate } from 'react-router-dom'; 
 
-const Register = () => {
+const Register = ({setUser}) => {
+  const navigate = useNavigate();
   const [users, setUsers] = useState(data); // state holds users
-  const [name, setName] = useState('');
+  const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [confirmPassword, setConfirmPassword] = useState('');
+  // const [confirmPassword, setConfirmPassword] = useState('');
+
+  // const handleSubmit = (e) => {
+  //   e.preventDefault();
+
+  //   if (password !== confirmPassword) {
+  //     alert("Passwords do not match!");
+  //     return;
+  //   }
+
+  //   // Check if email already exists
+  //   const emailExists = users.some(user => user.email === email);
+  //   if (emailExists) {
+  //     alert("Email already registered!");
+  //     return;
+  //   }
+
+  //   // Create new user object
+  //   const newUser = {
+  //     id: users.length + 1,
+  //     name,
+  //     email,
+  //     password, // NOTE: in real apps, hash the password
+  //     createdAt: new Date().toISOString()
+  //   };
+
+  //   // Update state
+  //   setUsers([...users, newUser]);
+
+  //   // Clear form
+  //   setName('');
+  //   setEmail('');
+  //   setPassword('');
+  //   setConfirmPassword('');
+
+  //   alert("Registration successful!");
+  //   console.log('Updated Users:', [...users, newUser]);
+  // };
+
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    if (password !== confirmPassword) {
-      alert("Passwords do not match!");
-      return;
-    }
+      //   if (password !== confirmPassword) {
+      // alert("Passwords do not match!");
+      // return;
+    
 
-    // Check if email already exists
-    const emailExists = users.some(user => user.email === email);
-    if (emailExists) {
-      alert("Email already registered!");
-      return;
-    }
+    fetch('https://recipemanagmentbackend-1.onrender.com/register', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ username, email,password })
+  })
+    .then(response => response.json())
+    .then(data => {
+      console.log('Backend response:', data);
 
-    // Create new user object
-    const newUser = {
-      id: users.length + 1,
-      name,
-      email,
-      password, // NOTE: in real apps, hash the password
-      createdAt: new Date().toISOString()
-    };
+      if (data.message.toLowerCase().includes('successful')) {
+        setUser(username); 
+        // alert(data.message); 
+        alert("User Registered Successfully");
+        navigate('/');
+      } 
+    })
+    .catch(error => {
+      console.error('Login error:', error);
+      alert('Error logging in. Please try again later.');
+    });
+  }
 
-    // Update state
-    setUsers([...users, newUser]);
-
-    // Clear form
-    setName('');
-    setEmail('');
-    setPassword('');
-    setConfirmPassword('');
-
-    alert("Registration successful!");
-    console.log('Updated Users:', [...users, newUser]);
-  };
 
   return (
     <div className="flex items-center justify-center bg-gray-100 min-h-screen">
@@ -55,9 +89,9 @@ const Register = () => {
 
         <input
           type="text"
-          placeholder="Full Name"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
+          placeholder="username"
+          value={username}
+          onChange={(e) => setUsername(e.target.value)}
           className="border-2 border-gray-300 rounded-md p-2 focus:outline-none focus:border-blue-500"
           required
         />
@@ -80,14 +114,14 @@ const Register = () => {
           required
         />
 
-        <input
+        {/* <input
           type="password"
           placeholder="Confirm Password"
           value={confirmPassword}
           onChange={(e) => setConfirmPassword(e.target.value)}
           className="border-2 border-gray-300 rounded-md p-2 focus:outline-none focus:border-blue-500"
           required
-        />
+        /> */}
 
         <button 
           type="submit" 

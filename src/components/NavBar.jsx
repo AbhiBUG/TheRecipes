@@ -31,7 +31,7 @@ const NavBar = ({user}) => {
         <Link to="/About" className="hover:underline">About</Link>
         <Link to="/Contact" className="hover:underline">Contact</Link> */}
         <div className="flex flex-row gap-3">
-          {user && <h3>{user.name}</h3>}
+          {user && <h3>{user}</h3>}
          <AiOutlineUser className="shadow-xl rounded-xl size-6 p-1 border-2 border-black cursor-pointer" onClick={toggleOptions}></AiOutlineUser>
           
         </div>

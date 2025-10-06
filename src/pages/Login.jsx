@@ -3,27 +3,36 @@ import usersData from '../data/user.json'; // adjust path if needed
 import { useNavigate } from 'react-router-dom';
 
 const Login = ({ setUser }) => {
-  const [email, setEmail] = useState('');
+  const [username, setusername] = useState('');
   const [password, setPassword] = useState('');
   const navigate = useNavigate();
 
   const handleSubmit = (e) => {
-    e.preventDefault();
+  e.preventDefault();
 
-    // Check if the email exists in usersData
-    const user = usersData.find(
-      (u) => u.email === email && u.password === password
-    );
+  console.log('Submitting login with:', { username, password: '*****' });
 
-    if (user) {
-      // Authentication successful
-      setUser(user); // Set user in parent state
-      alert(`Welcome back, ${user.name}!`);
-      navigate('/'); // Redirect to home
-    } else {
-      alert('Invalid email or password!');
-    }
-  };
+  fetch('https://recipemanagmentbackend-1.onrender.com/login', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ username, password })
+  })
+    .then(response => response.json())
+    .then(data => {
+       setUser(username); 
+      console.log('Backend response:', data);
+
+      if (data.message.toLowerCase().includes('successful')) {
+       
+        alert(data.message); 
+        navigate('/');
+      } 
+    })
+    .catch(error => {
+      console.error('Login error:', error);
+      alert('Error logging in. Please try again later.');
+    });
+};
 
   return (
     <div className="flex items-center justify-center h-screen bg-gray-100">
@@ -34,13 +43,13 @@ const Login = ({ setUser }) => {
         <h2 className="text-2xl font-bold text-center mb-4">Login</h2>
 
         <div className="flex flex-col">
-          <label htmlFor="email" className="mb-1 font-medium">Email</label>
+          <label htmlFor="username" className="mb-1 font-medium">Username</label>
           <input
-            type="email"
-            id="email"
-            placeholder="Enter your email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
+            type="text"
+            id="username"
+            placeholder="Enter your username"
+            value={username}
+            onChange={(e) => setusername(e.target.value)}
             className="border-2 border-gray-300 rounded-md p-2 focus:outline-none focus:border-blue-500"
             required
           />
