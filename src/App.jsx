@@ -4,9 +4,12 @@ import Hero from './components/Hero'
 import { BrowserRouter as Router,Routes,Route} from 'react-router-dom'
 import Login from './pages/Login'
 import Register from './pages/Register'
+import Profile from './pages/Profile'
+import Recipe from './pages/Recipe'
 function App() {
 
 const [user,setUser] = useState(null);
+// const [RecipeKey,setRecipeKey] = useState(null);
   return (
     <>
   <Router>
@@ -19,6 +22,8 @@ const [user,setUser] = useState(null);
         {/* Auth Pages */}
         <Route path="/Login" element={<Login setUser={setUser}/>} />
         <Route path="/Register" element={<Register setUser={setUser}/>} />
+        <Route path="/Profile" element={<Profile user={user}/>} />
+        <Route path="/recipe/:key" element={<Recipe/>} />
       </Routes>
         <button className="fixed rounded-xl size-10 bottom-10 right-12 cursor-pointer">
                  <svg

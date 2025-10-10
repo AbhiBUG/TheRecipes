@@ -1,7 +1,6 @@
 import React, { useState } from "react";
-import { AiOutlineClose, AiOutlineSmile } from "react-icons/ai";
-import { BsImage, BsCalendarEvent } from "react-icons/bs";
-import { HiOutlineCog } from "react-icons/hi";
+import { AiOutlineClose } from "react-icons/ai";
+import { BsImage } from "react-icons/bs";
 
 const Create = ({ showModal, user }) => {
   const [title, setTitle] = useState("");
@@ -20,46 +19,50 @@ const Create = ({ showModal, user }) => {
 
   const handleAddRecipe = async () => {
     try {
-      // For now backend expects JSON with image_url as string
-      // If you implement file upload in backend later, you can use FormData
-      const recipeData = {
-        title,
-        description,
-        ingredients: ingredients.split(",").map((i) => i.trim()),
-        steps: steps.split("\n").map((s) => s.trim()),
-        image_url: file ? "https://via.placeholder.com/150" : null, // temporary
-        cuisine,
-        difficulty,
-        cooking_time: parseInt(cookingTime, 10) || 0,
-      };
+      const formData = new FormData();
+      formData.append("title", title);
+      formData.append("description", description);
+      formData.append("ingredients", ingredients);
+      formData.append("steps", steps);
+      formData.append("cuisine", cuisine);
+      formData.append("difficulty", difficulty);
+      formData.append("cooking_time", cookingTime);
+      if (file) formData.append("image", file);
 
       const response = await fetch(
         "https://recipemanagmentbackend-1.onrender.com/recipe",
         {
           method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(recipeData),
+          body: formData,
         }
       );
 
-      const data = await response.json();
+      // 👇 handle non-JSON responses safely
+      let data;
+      const text = await response.text();
+      try {
+        data = JSON.parse(text);
+      } catch {
+        console.error("Server returned non-JSON:", text);
+        alert("Server returned an unexpected response. Check backend logs.");
+        return;
+      }
 
       if (response.ok) {
-        alert(data.message || "Recipe added successfully");
+        alert(data.message || "Recipe added successfully!");
         showModal(false);
       } else {
         alert(data.error || "Failed to add recipe");
       }
     } catch (err) {
       console.error("Error adding recipe:", err);
-      alert("Error adding recipe. Try again.");
+      alert("Error adding recipe. Please try again.");
     }
   };
 
   return (
     <div className="fixed inset-0 flex items-center justify-center bg-black/40 backdrop-blur-sm z-50">
       <div className="bg-white rounded-xl shadow-xl w-[400px] max-w-full p-4 flex flex-col gap-4 relative max-h-[90vh] overflow-y-auto">
-        
         {/* Close Button */}
         <button
           className="absolute top-2 right-2 text-gray-600 hover:text-black"
@@ -128,7 +131,7 @@ const Create = ({ showModal, user }) => {
           />
           <input
             type="number"
-            placeholder="Cooking Time (min)"
+            placeholder="Time (min)"
             className="border border-gray-300 rounded px-2 py-1 outline-none w-24"
             value={cookingTime}
             onChange={(e) => setCookingTime(e.target.value)}

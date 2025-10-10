@@ -1,48 +1,54 @@
- <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 280 220" width="280" height="220">
+ <svg xmlns="http://www.w3.org/2000/svg" viewBox="45 40 280 230" width="550" height="570">
+    <defs>
+      <linearGradient id="kadhaiGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" style="stop-color:#34495e;stop-opacity:1"/>
+        <stop offset="50%" style="stop-color:#2c3e50;stop-opacity:1"/>
+        <stop offset="100%" style="stop-color:#1a252f;stop-opacity:1"/>
+      </linearGradient>
+      <style>
+        .kadhai-steam {
+          animation: steam 2s ease-in-out infinite;
+        }
+        @keyframes steam {
+          0%,100% { opacity: 0.6; transform: translateY(0px); }
+          50% { opacity: 0.9; transform: translateY(-8px); }
+        }
+      </style>
+    </defs>
 
-        <defs>
-          {/* Gradient for kadhai */}
-          <linearGradient id="kadhaiGrad" x1="0" y1="0" x2="1" y2="1">
-            <stop offset="0%" stopColor="#666"/>
-            <stop offset="100%" stopColor="#222"/>
-          </linearGradient>
+    <!-- Kadhai shadow -->
+    <ellipse cx="175" cy="255" rx="135" ry="35" fill="#34495e" opacity="0.3"/>
 
-          {/* Gradient for text */}
-          <linearGradient id="textGrad" x1="0" y1="0" x2="1" y2="0">
-            <stop offset="0%" stopColor="#ff8800"/>
-            <stop offset="100%" stopColor="#e62e00"/>
-          </linearGradient>
-        </defs>
+    <!-- Main kadhai body -->
+    <path d="M60 200 Q60 260 175 280 Q290 260 290 200 L275 185 Q275 230 175 250 Q75 230 75 185 Z"
+          fill="url(#kadhaiGradient)" stroke="#2c3e50" stroke-width="4"/>
 
-        {/* Kadhai Bowl (curvy) */}
-        <path d="M40 120 Q140 50 240 120 Q140 170 40 120 Z"
-              fill="url(#kadhaiGrad)" stroke="#111" strokeWidth="2"/>
+    <!-- Handles -->
+    <ellipse cx="45" cy="190" rx="25" ry="10" fill="#34495e" transform="rotate(-20 45 190)"/>
+    <ellipse cx="305" cy="190" rx="25" ry="10" fill="#34495e" transform="rotate(20 305 190)"/>
 
-        {/* Decorative inner line art */}
-        <path d="M50 115 Q140 60 230 115"
-              fill="none" stroke="#444" strokeWidth="1.5"/>
-        <path d="M55 125 Q140 80 225 125"
-              fill="none" stroke="#555" strokeWidth="1"/>
+    <!-- Food -->
+    <ellipse cx="175" cy="205" rx="95" ry="25" fill="#e74c3c" opacity="0.85"/>
+    <ellipse cx="160" cy="200" rx="48" ry="12" fill="#f39c12" opacity="0.9"/>
+    <ellipse cx="195" cy="203" rx="39" ry="10" fill="#27ae60" opacity="0.7"/>
 
-        {/* Handles with traditional curve */}
-        <path d="M38 115 C15 110, 15 140, 38 135"
-              fill="none" stroke="#444" strokeWidth="5" strokeLinecap="round"/>
-        <path d="M242 115 C265 110, 265 140, 242 135"
-              fill="none" stroke="#444" strokeWidth="5" strokeLinecap="round"/>
+    <!-- Steam -->
+    <g class="kadhai-steam">
+      <path d="M130 180 Q136 140 130 100 Q124 70 130 40"
+            stroke="#ecf0f1" stroke-width="5" fill="none" stroke-linecap="round" opacity="0.7"/>
+      <path d="M175 180 Q169 140 175 100 Q181 70 175 40"
+            stroke="#ecf0f1" stroke-width="5" fill="none" stroke-linecap="round" opacity="0.8"/>
+      <path d="M220 180 Q226 140 220 100 Q214 70 220 40"
+            stroke="#ecf0f1" stroke-width="5" fill="none" stroke-linecap="round" opacity="0.7"/>
+    </g>
 
-        {/* Rising smoke */}
-        <path d="M110 85 C105 60, 115 40, 110 10"
-              fill="none" stroke="gray" strokeWidth="2.5" strokeLinecap="round" opacity="0.8"/>
-        <path d="M140 85 C135 55, 145 35, 140 5"
-              fill="none" stroke="gray" strokeWidth="2.5" strokeLinecap="round" opacity="0.7"/>
-        <path d="M170 85 C165 55, 175 35, 170 10"
-              fill="none" stroke="gray" strokeWidth="2.5" strokeLinecap="round" opacity="0.6"/>
+    <!-- Spoon -->
+    <ellipse cx="255" cy="140" rx="20" ry="10" fill="#95a5a6" transform="rotate(30 255 140)"/>
+    <line x1="245" y1="150" x2="215" y2="190" stroke="#95a5a6" stroke-width="5" stroke-linecap="round"/>
 
-        {/* Logo Text inside the Kadhai */}
-        <text x="140" y="135" textAnchor="middle"
-              fontFamily="Georgia, serif"
-              fontSize="22" fontWeight="bold"
-              fill="url(#textGrad)">
-          TheRecipes
-        </text>
-      </svg>
+    <!-- Decorative spices -->
+    <circle cx="90" cy="100" r="8" fill="#f39c12"/>
+    <circle cx="280" cy="110" r="7" fill="#e74c3c"/>
+    <circle cx="100" cy="150" r="6" fill="#27ae60"/>
+    <circle cx="265" cy="70" r="6" fill="#9b59b6"/>
+  </svg>

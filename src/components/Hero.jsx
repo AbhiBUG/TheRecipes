@@ -42,7 +42,7 @@ const Hero = ({user}) => {
     }
 
   return (
-    <div className="main mt-12 flex flex-row w-[100%] h-full bg-blue-900">
+    <div className="main mt-12 flex flex-row w-[100%] bg-blue-900">
             <div className="sidebar sticky top-12 flex flex-col gap-4 bg-blue-900 text-white p-2 h-[100%] ">
                 
                 

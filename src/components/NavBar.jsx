@@ -12,16 +12,26 @@ const NavBar = ({user}) => {
     setShowOptions(!showOptions);
   };
 
+const handleClick = ()=>{
+if(user!=null)
+{
+  navigate("/Profile");
+}
+else{
+  navigate("/Login");
+}
+}
+  
   return (
     <>
     <div className="flex flex-col bg-red-400">
-    <div className="fixed top-0 left-0 w-full flex flex-row items-center justify-between p-3 bg-base-500 border-b border-base-300 shadow-xl z-50 bg-white">
+    <div className="fixed top-0 left-0 w-full flex flex-row items-center justify-between p-3 bg-base-500 border-b border-base-300 shadow-xl z-50 bg-white backdrop-blur-md text-gray-900 shadow-md">
     
     {/*Left NavBar*/}
     <div className="flex flex-row items-center">
     
       {/* <img src={Aptistaan1} className="h-[20px] cursor-pointer" ></img> */}
-        <h1><img src={logo} className="h-5"></img></h1>
+        <h1><img src={logo} className="h-7"></img></h1>
         </div>
         {/* */}
        
@@ -44,7 +54,7 @@ const NavBar = ({user}) => {
        {/*Options*/}
       {showOptions && ( <div className="fixed right-0 bg-white shadow-xl rounded-xl top-10">
       <ul className="p-2">
-        <li className="cursor-pointer hover:bg-blue-100 p-1" >Profile</li>
+        <li className="cursor-pointer hover:bg-blue-100 p-1" onClick={()=>handleClick()}>Profile</li>
         {user && <li className="cursor-pointer hover:bg-blue-100 p-1" onClick={()=>user==null}>Sign Out</li>}
         {!user && <li className="cursor-pointer hover:bg-blue-100 p-1" onClick={()=>navigate("/Login")}>Sign In</li>}
         </ul>
